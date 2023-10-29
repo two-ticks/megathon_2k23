@@ -1,5 +1,8 @@
 # megathon_2k23
 
+# Figma File
+[Presentation](https://www.figma.com/file/De9cz2hzi7hEg3G7IDDz7A/RaitaluZone?type=design&node-id=25%3A2808&mode=design&t=STb02jCBdTrbqWQC-1)
+
 # Google Earth Engine - Identification of Paddy Cultivation 
 
 ```js
