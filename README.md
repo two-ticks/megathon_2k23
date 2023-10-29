@@ -393,3 +393,8 @@ print(chart);
  ```
 
 </details>
+
+# Disease Prediction
+Training command: python train.py
+
+Inference on single image: python inference.py --model_path --image_path 
