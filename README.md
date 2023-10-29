@@ -5,6 +5,10 @@
 
 # Google Earth Engine - Identification of Paddy Cultivation 
 
+
+<details>
+<summary> Google Earth Engine Script </summary>
+  
 ```js
 var dist = table
 
@@ -346,8 +350,14 @@ Map.addLayer(plantingStage ,  {min: 0, max: 1}, 'planting', 0);
 Map.addLayer(growthStage ,  {min: 0, max: 1}, 'growth', 0);
 Map.addLayer(harvestStage ,  {min: 0, max: 1}, 'harvest', 0);
 ```
+</details>
 
-# NDVI 
+# NDVI
+
+
+<details>
+<summary> Google Earth Engine Script </summary>
+  
 ```js
 
 // var tel =table.filter(ee.Filter.or(ee.Filter.eq('DISTRICT_N' , 'Hyderabad'),ee.Filter.eq('DISTRICT_N','Nalgonda'),ee.Filter.eq('DISTRICT_N','Warangal')))
@@ -381,3 +391,5 @@ var chart = ui.Chart.image.seriesByRegion({
  
 print(chart);
  ```
+
+</details>
