@@ -346,3 +346,38 @@ Map.addLayer(plantingStage ,  {min: 0, max: 1}, 'planting', 0);
 Map.addLayer(growthStage ,  {min: 0, max: 1}, 'growth', 0);
 Map.addLayer(harvestStage ,  {min: 0, max: 1}, 'harvest', 0);
 ```
+
+# NDVI 
+```js
+
+// var tel =table.filter(ee.Filter.or(ee.Filter.eq('DISTRICT_N' , 'Hyderabad'),ee.Filter.eq('DISTRICT_N','Nalgonda'),ee.Filter.eq('DISTRICT_N','Warangal')))
+var tel =table.filter(ee.Filter.or(ee.Filter.eq('DISTRICT_N' , 'Hyderabad')))
+ 
+var startdate = '2021-06-01' ;
+var enddate = '2022-06-01' ;
+ 
+var images = sentinel.filter(ee.Filter.date(startdate, enddate)).filterBounds(tel);
+print(images);
+ 
+var ndvi = function(image){
+  var ndv = image.normalizedDifference(['B8','B4']);
+  return ndv.copyProperties(image,['system:Index' , 'system:time_start' ])
+}
+ 
+var ndvi = images.map(ndvi);
+print(ndvi);
+ 
+var nd = ndvi.first().clip(tel);
+Map.addLayer(nd,{min:0,max:1,palette:['White', 'Green']},'NDVI');
+ 
+var aoi = roi.merge(roi1);
+var chart = ui.Chart.image.seriesByRegion({
+  imageCollection: ndvi,
+  regions: tel, 
+  reducer:ee.Reducer.mean(),
+  scale:250,
+  seriesProperty:'DISTRICT_N'
+  });
+ 
+print(chart);
+ ```
